@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ماجراجویی خانوادگی</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #101827, #263c55);
+    color: white;
+    font-family: Tahoma, sans-serif;
+    text-align: center;
+}
+
+.container {
+    max-width: 750px;
+    margin: auto;
+    padding: 35px 15px;
+}
+
+h1 {
+    color: #ffd166;
+    font-size: 32px;
+}
+
+p {
+    line-height: 2;
+    font-size: 17px;
+}
+
+.card {
+    display: inline-block;
+    background: #344b65;
+    border-radius: 18px;
+    padding: 20px;
+    margin: 10px;
+    width: 180px;
+}
+
+.emoji {
+    font-size: 55px;
+}
+
+button {
+    background: #06d6a0;
+    color: #102b2b;
+    border: none;
+    padding: 14px 24px;
+    margin: 8px;
+    border-radius: 12px;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #ffd166;
+}
+
+#game {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 18px;
+    min-height: 120px;
+}
+
+.footer {
+    margin-top: 45px;
+    color: #aab8ca;
+    font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌟 ماجراجویی خانوادگی 🌟</h1>
+
+<h2>به دنیای اسرارآمیز خوش آمدید!</h2>
+
+<p>
+یک سفر هیجان‌انگیز برای دو قهرمان دوست‌داشتنی.
+آماده کشف گنج خانوادگی هستید؟
+</p>
+
+<div id="game">
+
+<h2>انتخاب قهرمان</h2>
+
+<div class="card">
+<div class="emoji">👩</div>
+<h3>مامان</h3>
+<button onclick="choose('مامان')">انتخاب مامان</button>
+</div>
+
+<div class="card">
+<div class="emoji">👨</div>
+<h3>بابا</h3>
+<button onclick="choose('بابا')">انتخاب بابا</button>
+</div>
+
+</div>
+
+<div class="footer">
+ساخته شده با عشق ❤️
+</div>
+
+</div>
+
+<script>
+
+let player = "";
+
+function choose(name) {
+    player = name;
+
+    document.getElementById("game").innerHTML = `
+        <h2>سلام ${player} عزیز! ❤️</h2>
+        <p>تو قهرمان این ماجراجویی هستی!</p>
+        <p>برای شروع سفر آماده‌ای؟</p>
+        <button onclick="adventure()">شروع ماجراجویی 🎮</button>
+    `;
+}
+
+function adventure() {
+    document.getElementById("game").innerHTML = `
+        <h2>🌳 جنگل اسرارآمیز</h2>
+        <p>${player} وارد یک جنگل جادویی شده است.</p>
+        <p>دو مسیر پیش روی تو قرار دارد:</p>
+        <button onclick="path(1)">🌲 مسیر جنگل</button>
+        <button onclick="path(2)">🏔️ مسیر کوهستان</button>
+    `;
+}
+
+function path(number) {
+
+    let result = "";
+
+    if (number === 1) {
+        result = `
+            <h2>🎁 صندوق جادویی!</h2>
+            <p>آفرین ${player}!</p>
+            <p>در میان درختان یک صندوق قدیمی پیدا کردی.</p>
+        `;
+    } else {
+        result = `
+            <h2>🗺️ نقشه گمشده!</h2>
+            <p>آفرین ${player}!</p>
+            <p>روی قله کوه یک نقشه قدیمی پیدا کردی.</p>
+        `;
+    }
+
+    document.getElementById("game").innerHTML = `
+        ${result}
+        <p>آیا آماده مرحله بعدی هستی؟</p>
+        <button onclick="finalTreasure()">پیدا کردن گنج نهایی 🏆</button>
+    `;
+}
+
+function finalTreasure() {
+    document.getElementById("game").innerHTML = `
+        <h1>🏆 تبریک!</h1>
+        <h2>شما گنج واقعی را پیدا کردید!</h2>
+        <p>گنج واقعی این دنیا، عشق و خانواده است. ❤️</p>
+        <p>مامان و بابا، شما بهترین گنج های این دنیا هستید.</p>
+        <button onclick="location.reload()">شروع دوباره 🔄</button>
+    `;
+}
+
+</script>
+
+</body>
+</html>
